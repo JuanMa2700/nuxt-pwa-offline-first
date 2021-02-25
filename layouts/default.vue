@@ -1,12 +1,15 @@
 <template>
   <div>
+    <Navbar />
     <Nuxt />
   </div>
 </template>
 
-<style>
-* {
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+<script>
+import Navbar from '../components/Navbar.vue'
+export default {
+  components: {
+    Navbar,
+  },
 }
-</style>
+</script>
