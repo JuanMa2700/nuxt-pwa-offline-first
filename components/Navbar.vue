@@ -2,16 +2,16 @@
   <div class="navbar">
     <div class="container">
       <font-awesome-icon
-        v-if="activeMenu"
-        class="nav-icon"
-        :icon="['fas', 'bars']"
-        v-on:click="changeMenu"
-      />
-      <font-awesome-icon
         v-if="!activeMenu"
         class="nav-icon"
+        :icon="['fas', 'bars']"
+        @click="changeMenu"
+      />
+      <font-awesome-icon
+        v-if="activeMenu"
+        class="nav-icon"
         :icon="['fas', 'times']"
-        v-on:click="changeMenu"
+        @click="changeMenu"
       />
       CAPTURA DE DATOS
     </div>
@@ -28,6 +28,7 @@ export default {
   methods: {
     changeMenu() {
       this.activeMenu = !this.activeMenu
+      this.$emit('activeMenu', this.activeMenu)
     },
   },
 }
@@ -36,12 +37,13 @@ export default {
 <style>
 .navbar {
   position: fixed;
+  z-index: 50;
   height: 9vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: -2px 2px 16px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 4px 6px -2px rgba(0, 0, 0, 0.75);
   font-size: 18px;
 }
 .container {
