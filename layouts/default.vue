@@ -2,7 +2,9 @@
   <div>
     <Navbar />
     <Sidebar />
-    <Nuxt />
+    <div class="content-wrapper">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
@@ -17,3 +19,16 @@ export default {
   },
 }
 </script>
+
+<style>
+.content-wrapper {
+  margin-top: 9vh;
+  position: relative;
+  min-height: 91vh;
+  z-index: 5;
+  background-image: url('~assets/images/wave.svg');
+  background-position: 0% 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+</style>

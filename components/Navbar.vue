@@ -50,18 +50,14 @@ export default {
 <style>
 .navbar {
   position: fixed;
+  top: 0;
   z-index: 50;
   height: 9vh;
   width: 100vw;
   display: flex;
-  justify-content: center;
   align-items: center;
   box-shadow: -1px 4px 6px -2px rgba(0, 0, 0, 0.75);
   font-size: 18px;
-}
-.container {
-  display: flex;
-  align-items: center;
 }
 .icon-wrapper {
   width: 2rem;

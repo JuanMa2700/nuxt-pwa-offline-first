@@ -41,10 +41,11 @@ export default {
 
 <style>
 .sidebar {
-  position: relative;
+  position: absolute;
   z-index: 10;
   padding: 2rem;
-  transition: margin-left 0.3s ease;
+  transition: transform 0.3s ease;
+  background-color: white;
   height: 91vh;
   top: 9vh;
   width: 90%;
@@ -52,7 +53,7 @@ export default {
   box-shadow: -3px 25px 43px -10px rgba(0, 0, 0, 0.75);
 }
 .disabled {
-  margin-left: -40rem;
+  transform: translateX(-40rem);
 }
 .sidebar .menu-item {
   display: block;
