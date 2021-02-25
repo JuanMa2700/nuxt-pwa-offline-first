@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: var(--font-primary);
+  font-weight: 800;
   color: var(--font-color);
 }
 

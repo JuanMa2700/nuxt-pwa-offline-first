@@ -12,7 +12,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap',
+          'https://fonts.googleapis.com/css2?family=Roboto:wght@800;100&display=swap',
       },
     ],
   },

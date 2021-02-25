@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Navbar @activeMenu="changeMenu" />
-    <Sidebar ref="sidebar" />
+    <Navbar />
+    <Sidebar />
     <Nuxt />
   </div>
 </template>
@@ -14,11 +14,6 @@ export default {
   components: {
     Navbar,
     Sidebar,
-  },
-  methods: {
-    changeMenu(activeMenu) {
-      this.$refs.sidebar.changeState(activeMenu)
-    },
   },
 }
 </script>

@@ -1,19 +1,21 @@
 <template>
   <div class="navbar">
     <div class="container">
-      <font-awesome-icon
-        v-if="!activeMenu"
-        class="nav-icon"
-        :icon="['fas', 'bars']"
-        @click="changeMenu"
-      />
-      <font-awesome-icon
-        v-if="activeMenu"
-        class="nav-icon"
-        :icon="['fas', 'times']"
-        @click="changeMenu"
-      />
-      CAPTURA DE DATOS
+      <div class="icon-wrapper">
+        <font-awesome-icon
+          v-if="!activeMenu"
+          class="nav-icon"
+          :icon="['fas', 'bars']"
+          @click="showMenu"
+        />
+        <font-awesome-icon
+          v-if="activeMenu"
+          class="nav-icon"
+          :icon="['fas', 'times']"
+          @click="hideMenu"
+        />
+      </div>
+      {{ currentView }}
     </div>
   </div>
 </template>
@@ -21,14 +23,25 @@
 <script>
 export default {
   data() {
-    return {
-      activeMenu: false,
-    }
+    return { previousView: 'CAPTURA DE DATOS' }
+  },
+  computed: {
+    currentView() {
+      return this.$store.state.currentView
+    },
+    activeMenu() {
+      return this.$store.state.activeMenu
+    },
   },
   methods: {
-    changeMenu() {
-      this.activeMenu = !this.activeMenu
-      this.$emit('activeMenu', this.activeMenu)
+    showMenu() {
+      this.previousView = this.$store.state.currentView
+      this.$store.commit('changeView', 'MENU')
+      this.$store.commit('changeMenuState', !this.$store.state.activeMenu)
+    },
+    hideMenu() {
+      this.$store.commit('changeView', this.previousView)
+      this.$store.commit('changeMenuState', !this.$store.state.activeMenu)
     },
   },
 }
@@ -50,10 +63,11 @@ export default {
   display: flex;
   align-items: center;
 }
+.icon-wrapper {
+  width: 2rem;
+}
 .nav-icon {
-  color: red;
   font-size: 20px;
-  margin-right: 0.9rem;
   cursor: pointer;
 }
 </style>
