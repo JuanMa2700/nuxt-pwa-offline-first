@@ -64,12 +64,15 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+.profile-name {
+  margin: 1.5rem;
+}
 .profile-name p {
   font-size: 23px;
 }
 .social-icons {
   display: flex;
-  width: 120px;
+  width: 130px;
   justify-content: space-between;
 }
 .social-icon path {

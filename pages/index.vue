@@ -31,10 +31,20 @@
       <p class="required-fields">* Campos requeridos</p>
       <input class="submit" type="submit" value="ENVIAR" />
     </form>
+    <v-snackbar v-model="snackbar" :timeout="timeout">
+      {{ text }}
+      <template #action="{ attrs }">
+        <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -42,21 +52,41 @@ export default {
       name: null,
       address: null,
       gender: null,
+      snackbar: false,
+      text: '',
+      timeout: 3000,
     }
   },
   mounted() {
     this.$store.commit('changeLoading', false)
   },
   methods: {
-    checkForm(e) {
+    async checkForm(e) {
+      e.preventDefault()
       this.errors = {}
       if (!this.name) {
         this.errors.name = 'El nombre es obligatorio.'
+        return
       }
-      if (!this.address) {
-        this.errors.address = 'La dirección es obligatoria.'
+      const payload = {
+        name: this.name,
+        address: this.address,
+        gender: this.gender,
       }
-      e.preventDefault()
+      const headers = { contentType: 'application/json' }
+      try {
+        await axios.put(
+          'https://c89adbb9-e00c-461a-a46b-24411f352568.mock.pstmn.io/user',
+          payload,
+          {
+            headers,
+          }
+        )
+        this.text = '¡Información enviada con éxito!'
+      } catch (e) {
+        this.text = `Error al enviar información`
+      }
+      this.snackbar = true
     },
   },
 }
@@ -153,5 +183,8 @@ form .field label.dismiss {
   font-size: 12px;
   bottom: -0.8rem;
   left: 0.5rem;
+}
+.v-snack__content {
+  color: white !important;
 }
 </style>
