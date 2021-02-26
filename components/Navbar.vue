@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <div class="container">
+    <div class="container flex-container">
       <div class="icon-wrapper">
         <font-awesome-icon
           v-if="!activeMenu"
@@ -57,7 +57,12 @@ export default {
   display: flex;
   align-items: center;
   box-shadow: -1px 4px 6px -2px rgba(0, 0, 0, 0.75);
+  background-color: white;
   font-size: 18px;
+}
+.flex-container {
+  display: flex;
+  align-items: center;
 }
 .icon-wrapper {
   width: 2rem;

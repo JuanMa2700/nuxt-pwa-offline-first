@@ -15,9 +15,6 @@
       <div class="field">
         <input id="address" v-model="address" type="text" name="age" min="0" />
         <label for="address" :class="{ dismiss: address }"> Dirección </label>
-        <div v-if="errors.address" class="alert">
-          {{ errors.address }}
-        </div>
       </div>
 
       <div class="field">
@@ -46,6 +43,9 @@ export default {
       address: null,
       gender: null,
     }
+  },
+  mounted() {
+    this.$store.commit('changeLoading', false)
   },
   methods: {
     checkForm(e) {
