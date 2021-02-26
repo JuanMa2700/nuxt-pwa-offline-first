@@ -1,17 +1,10 @@
 <template>
   <div class="sidebar" :class="{ disabled: !activeMenu }">
     <div class="menu-list">
-      <NuxtLink
-        class="menu-item"
-        to="/"
-        @click.native="updateView('CAPTURA DE DATOS')"
-      >
+      <NuxtLink class="menu-item" to="/" @click.native="updateView()">
         Captura de Datos
       </NuxtLink>
-      <NuxtLink
-        class="menu-item"
-        to="/perfil"
-        @click.native="updateView('MI PERFIL')"
+      <NuxtLink class="menu-item" to="/perfil" @click.native="updateView()"
         >Mi Perfil</NuxtLink
       >
     </div>
@@ -30,8 +23,7 @@ export default {
     },
   },
   methods: {
-    updateView(newView) {
-      this.$store.commit('changeView', newView)
+    updateView() {
       this.$store.commit('changeMenuState', !this.$store.state.activeMenu)
       document.querySelector('.sidebar').classList.add('disabled')
     },

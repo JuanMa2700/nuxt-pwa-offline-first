@@ -41,6 +41,7 @@ export default {
   },
   mounted() {
     this.$store.commit('changeLoading', false)
+    this.$store.commit('changeView', 'MI PERFIL')
   },
 }
 </script>

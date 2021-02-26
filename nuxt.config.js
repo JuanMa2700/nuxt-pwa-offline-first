@@ -50,6 +50,12 @@ export default {
     manifest: {
       lang: 'en',
     },
+    workbox: {
+      runtimeCaching: [
+        'https://fonts.googleapis.com/css2?family=Roboto:wght@800;100;900&display=swap',
+        'https://picsum.photos/id/1005/200',
+      ],
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

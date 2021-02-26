@@ -59,6 +59,7 @@ export default {
   },
   mounted() {
     this.$store.commit('changeLoading', false)
+    this.$store.commit('changeView', 'CAPTURA DE DATOS')
   },
   methods: {
     async checkForm(e) {
