@@ -2,7 +2,7 @@
 
 This app is focused on provide an offline first experience, managing background sync processes and cache storing through workbox @nuxt/pwa module
 
-![evidence1](https://github.com/JuanMa2700/nuxt-pwa-offline-first/blob/main/evidences/1.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![evidence1](https://github.com/JuanMa2700/nuxt-pwa-offline-first/blob/main/evidences/1.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![evidence2](https://github.com/JuanMa2700/nuxt-pwa-offline-first/blob/main/evidences/2.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![evidence3](https://github.com/JuanMa2700/nuxt-pwa-offline-first/blob/main/evidences/3.jpg)
 
