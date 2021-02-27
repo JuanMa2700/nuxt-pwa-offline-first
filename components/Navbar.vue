@@ -16,6 +16,7 @@
         />
       </div>
       {{ currentView }}
+      {{ pendingRequests }}
     </div>
   </div>
 </template>
@@ -31,6 +32,9 @@ export default {
     },
     activeMenu() {
       return this.$store.state.activeMenu
+    },
+    pendingRequests() {
+      return this.$store.state.pending
     },
   },
   methods: {

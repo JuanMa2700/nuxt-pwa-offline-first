@@ -86,6 +86,7 @@ export default {
         this.text = '¡Información enviada con éxito!'
       } catch (e) {
         this.text = `Error al enviar información`
+        this.$store.dispatch('fetchRequestsLength')
       }
       this.snackbar = true
     },

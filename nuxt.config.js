@@ -1,4 +1,5 @@
 export default {
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-progressive-web-app',
@@ -48,12 +49,31 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
+      name: 'Nuxt.js PWA',
+      short_name: 'Nuxt.js PWA',
       lang: 'en',
     },
     workbox: {
+      cachingExtensions: '@plugins/workbox-sync',
       runtimeCaching: [
-        'https://fonts.googleapis.com/css2?family=Roboto:wght@800;100;900&display=swap',
-        'https://picsum.photos/id/1005/200',
+        {
+          urlPattern: 'https://fonts.(?:googleapis|gstatic).com/(.*)',
+          strategyOptions: {
+            cacheName: 'font',
+          },
+        },
+        {
+          urlPattern: 'https://jsonplaceholder.typicode.com/users/1',
+          strategyOptions: {
+            cacheName: 'user-profile',
+          },
+        },
+        {
+          urlPattern: 'https://picsum.photos/id/1005/200',
+          strategyOptions: {
+            cacheName: 'user-photo',
+          },
+        },
       ],
     },
   },

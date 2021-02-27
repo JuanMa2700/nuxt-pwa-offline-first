@@ -26,6 +26,13 @@ export default {
       return this.$store.state.loading
     },
   },
+  beforeMount() {
+    window.ononline = (event) => {
+      setTimeout(() => {
+        this.$store.dispatch('fetchRequestsLength')
+      }, 3500)
+    }
+  },
 }
 </script>
 
