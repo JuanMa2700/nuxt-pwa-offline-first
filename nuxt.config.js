@@ -17,6 +17,8 @@ export default {
     ],
   },
 
+  target: 'static',
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/css/variables.css', '@/assets/css/main.css'],
 
@@ -47,6 +49,9 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    icon: {
+      fileName: 'app-icon.png',
+    },
     manifest: {
       name: 'Nuxt.js PWA',
       short_name: 'Nuxt.js PWA',
