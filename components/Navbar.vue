@@ -1,22 +1,31 @@
 <template>
   <div class="navbar">
-    <div class="container flex-container">
-      <div class="icon-wrapper">
-        <font-awesome-icon
-          v-if="!activeMenu"
-          class="nav-icon"
-          :icon="['fas', 'bars']"
-          @click="showMenu"
-        />
-        <font-awesome-icon
-          v-if="activeMenu"
-          class="nav-icon"
-          :icon="['fas', 'times']"
-          @click="hideMenu"
-        />
+    <v-alert
+      class="requests-alert"
+      :class="{ 'show-requests-alert': pendingRequests > 0 }"
+      :value="true"
+      type="info"
+    >
+      envíos pendientes: {{ pendingRequests }}
+    </v-alert>
+    <div class="nav">
+      <div class="app-container flex-container">
+        <div class="icon-wrapper">
+          <font-awesome-icon
+            v-if="!activeMenu"
+            class="nav-icon"
+            :icon="['fas', 'bars']"
+            @click="showMenu"
+          />
+          <font-awesome-icon
+            v-if="activeMenu"
+            class="nav-icon"
+            :icon="['fas', 'times']"
+            @click="hideMenu"
+          />
+        </div>
+        {{ currentView }}
       </div>
-      {{ currentView }}
-      {{ pendingRequests }}
     </div>
   </div>
 </template>
@@ -52,7 +61,7 @@ export default {
 </script>
 
 <style>
-.navbar {
+.nav {
   position: fixed;
   top: 0;
   z-index: 50;
@@ -74,5 +83,32 @@ export default {
 .nav-icon {
   font-size: 20px;
   cursor: pointer;
+}
+.requests-alert {
+  position: fixed !important;
+  display: flex !important;
+  height: 8vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffe8e1 !important;
+  border: 1px solid #fc4400 !important;
+  z-index: 10;
+  top: 0;
+  width: 100vw;
+  tansition: all 0.2s;
+}
+.show-requests-alert {
+  top: 9vh;
+}
+.v-alert__content,
+.v-icon {
+  color: #fc4400 !important;
+}
+.v-alert__content {
+  font-weight: 500;
+}
+.v-icon {
+  transform: translateY(-2px);
+  margin-right: 7px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container profile-container">
+  <div class="app-container profile-container">
     <div v-if="user" class="profile-photo">
       <img :src="user.imageUrl" />
     </div>

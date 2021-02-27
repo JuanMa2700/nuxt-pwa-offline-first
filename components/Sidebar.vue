@@ -55,7 +55,7 @@ export default {
 }
 .sidebar-footer {
   position: absolute;
-  bottom: 0;
+  bottom: 16px;
 }
 .sidebar-footer p {
   color: rgba(51, 51, 51, 0.5) !important;

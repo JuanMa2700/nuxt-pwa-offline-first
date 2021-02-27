@@ -2,8 +2,12 @@
   <div>
     <Navbar />
     <Sidebar />
-    <div class="content-wrapper">
-      <!-- Optional spinner to render on nuxt bootstrap -->
+    <!-- Our container for variable content with some css -->
+    <div
+      class="content-wrapper"
+      :class="{ 'pending-requests': pendingRequests > 0 }"
+    >
+      <!-- Optional spinner to render while page loading -->
       <!-- <Loading v-if="loading" /> -->
       <Nuxt />
     </div>
@@ -25,12 +29,15 @@ export default {
     loading() {
       return this.$store.state.loading
     },
+    pendingRequests() {
+      return this.$store.state.pending
+    },
   },
   beforeMount() {
-    window.ononline = (event) => {
-      setTimeout(() => {
-        this.$store.dispatch('fetchRequestsLength')
-      }, 3500)
+    window.ononline = async (event) => {
+      await setTimeout(() => {
+        this.$store.commit('changePending', 0)
+      }, 2000)
     }
   },
 }
@@ -46,5 +53,9 @@ export default {
   background-position: 0% 100%;
   background-size: contain;
   background-repeat: no-repeat;
+  transition: all 0.2s;
+}
+.pending-requests {
+  margin-top: calc(9vh + 56px);
 }
 </style>

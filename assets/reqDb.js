@@ -30,30 +30,12 @@ class ReqDB {
     })
   }
 
-  getTransaction(stores, readWrite = 'readwrite') {
-    return this.db.transaction(stores, readWrite)
-  }
-
-  getRequestsStore() {
-    return this.getTransaction([ReqDB.REQUESTS_STORE_NAME]).objectStore(
-      ReqDB.REQUESTS_STORE_NAME
-    )
-  }
-
   getAll() {
     return new Promise((resolve, reject) => {
-      const requests = []
-      const store = this.getRequestsStore()
-      store.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result
-        if (cursor) {
-          requests.push(cursor.value)
-          cursor.continue()
-        }
-        resolve(requests)
-      }
-      store.openCursor().onerror = (e) => {
-        reject(e)
+      const tx = this.db.transaction(['requests'], 'readonly')
+      const store = tx.objectStore('requests')
+      store.getAll().onsuccess = (event) => {
+        resolve(event.target.result)
       }
     })
   }

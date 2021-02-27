@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="app-container">
     <form id="app" class="form" @submit="checkForm">
       <p>Formulario</p>
       <p style="font-weight: 100; font-size: 12px">

@@ -25,13 +25,7 @@ export const mutations = {
 export const actions = {
   async fetchRequestsLength({ commit }) {
     const db = await reqDb.connect()
-    db.getAll().then(
-      (res) => {
-        commit('changePending', res[0].length)
-      },
-      (err) => {
-        console.log('error' + err)
-      }
-    )
+    const data = await db.getAll()
+    commit('changePending', data.length)
   },
 }
