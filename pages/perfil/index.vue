@@ -1,3 +1,4 @@
+<!-- User profile page -->
 <template>
   <div class="app-container profile-container">
     <div v-if="user" class="profile-photo">
@@ -33,13 +34,17 @@ export default {
     }
   },
   async fetch() {
+    // fetching user data
     const { data } = await axios.get(
       'https://jsonplaceholder.typicode.com/users/1'
     )
+    // We extract the entire object
     this.user = data
+    // Custom image for profile image
     this.user.imageUrl = 'https://picsum.photos/id/1005/200'
   },
   mounted() {
+    // Optional for loading component render
     this.$store.commit('changeLoading', false)
     this.$store.commit('changeView', 'MI PERFIL')
   },

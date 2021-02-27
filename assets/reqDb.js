@@ -1,3 +1,8 @@
+// Custom class to manage interaction
+// with indexed db
+// See official doc here
+// https://developer.mozilla.org/es/docs/Web/API/IndexedDB_API/Using_IndexedDB
+
 class ReqDB {
   static get DB_NAME() {
     return 'workbox-background-sync'
@@ -7,6 +12,7 @@ class ReqDB {
     return 'requests'
   }
 
+  // Conection to indexed db
   connect() {
     return new Promise((resolve, reject) => {
       if (this.db) {
@@ -30,6 +36,9 @@ class ReqDB {
     })
   }
 
+  // Fetch our registers on indexed db for
+  // pending requests registered through
+  // workbox backgroundSync service worker
   getAll() {
     return new Promise((resolve, reject) => {
       const tx = this.db.transaction(['requests'], 'readonly')

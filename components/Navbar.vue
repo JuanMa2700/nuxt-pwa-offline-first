@@ -1,5 +1,7 @@
+<!-- Our nav component -->
 <template>
   <div class="navbar">
+    <!-- Alert for pending requests when connection lost -->
     <v-alert
       class="requests-alert"
       :class="{ 'show-requests-alert': pendingRequests > 0 }"
@@ -8,6 +10,7 @@
     >
       envíos pendientes: {{ pendingRequests }}
     </v-alert>
+    <!-- Our fixed navbar -->
     <div class="nav">
       <div class="app-container flex-container">
         <div class="icon-wrapper">
@@ -47,11 +50,13 @@ export default {
     },
   },
   methods: {
+    // Mannaging navbar title for current view when menu is opened
     showMenu() {
       this.previousView = this.$store.state.currentView
       this.$store.commit('changeView', 'MENU')
       this.$store.commit('changeMenuState', !this.$store.state.activeMenu)
     },
+    // Mannaging navbar title for current view when menu is closed
     hideMenu() {
       this.$store.commit('changeView', this.previousView)
       this.$store.commit('changeMenuState', !this.$store.state.activeMenu)

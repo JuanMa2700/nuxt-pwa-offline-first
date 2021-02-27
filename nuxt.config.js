@@ -1,5 +1,4 @@
 export default {
-  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-progressive-web-app',
@@ -54,7 +53,9 @@ export default {
       lang: 'en',
     },
     workbox: {
+      // Added script to Background Sync process
       cachingExtensions: '@plugins/workbox-sync',
+      // GET requests for static data to store
       runtimeCaching: [
         {
           urlPattern: 'https://fonts.(?:googleapis|gstatic).com/(.*)',
@@ -83,6 +84,7 @@ export default {
 
   // Nuxt font awesome configuration
   fontawesome: {
+    // Fetching just used icons
     icons: {
       solid: ['faBars', 'faTimes', 'faSortDown'],
       brands: ['faTwitter', 'faLinkedinIn', 'faFacebookF'],

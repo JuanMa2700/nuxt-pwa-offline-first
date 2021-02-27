@@ -25,6 +25,7 @@ export default {
     Sidebar,
     // Loading,
   },
+  // Getting sources from store to be used on template
   computed: {
     loading() {
       return this.$store.state.loading
@@ -34,6 +35,7 @@ export default {
     },
   },
   beforeMount() {
+    // Event listener to remove pending requests alert when conexion is restablished
     window.ononline = async (event) => {
       await setTimeout(() => {
         this.$store.commit('changePending', 0)

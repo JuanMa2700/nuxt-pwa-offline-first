@@ -1,3 +1,4 @@
+<!-- Spinner component to display while nuxt loading -->
 <template>
   <div class="lds-spinner-wrapper">
     <div class="lds-spinner">

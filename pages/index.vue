@@ -1,3 +1,4 @@
+<!-- Our principal page with form functionality -->
 <template>
   <div class="app-container">
     <form id="app" class="form" @submit="checkForm">
@@ -9,6 +10,7 @@
       <div class="field">
         <input id="name" v-model="name" type="text" name="name" />
         <label for="name" :class="{ dismiss: name }">Nombre *</label>
+        <!-- Conditional element for name required error -->
         <div v-if="errors.name" class="alert">{{ errors.name }}</div>
       </div>
 
@@ -48,7 +50,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      errors: [],
+      errors: {},
       name: null,
       address: null,
       gender: null,
@@ -58,15 +60,19 @@ export default {
     }
   },
   mounted() {
+    // Optional for loading component render
     this.$store.commit('changeLoading', false)
     this.$store.commit('changeView', 'CAPTURA DE DATOS')
   },
   methods: {
     async checkForm(e) {
+      // Prevent default form behaviour
       e.preventDefault()
       this.errors = {}
+      // Validation for required name
       if (!this.name) {
         this.errors.name = 'El nombre es obligatorio.'
+        // If name missing return
         return
       }
       const payload = {
@@ -76,6 +82,7 @@ export default {
       }
       const headers = { contentType: 'application/json' }
       try {
+        // PUT request to mock server using axios library
         await axios.put(
           'https://c89adbb9-e00c-461a-a46b-24411f352568.mock.pstmn.io/user',
           payload,
@@ -83,11 +90,16 @@ export default {
             headers,
           }
         )
+        // Text for material snackbar to show request success resoult
         this.text = '¡Información enviada con éxito!'
       } catch (e) {
+        // Text for material snackbar to show request error
         this.text = `Error al enviar información`
+        // If error sending request update store pending requests counter
         this.$store.dispatch('fetchRequestsLength')
       }
+      // always render a snackbar after sending our http request
+      // to show success or error
       this.snackbar = true
     },
   },

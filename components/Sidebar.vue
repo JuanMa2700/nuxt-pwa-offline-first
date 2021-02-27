@@ -1,3 +1,4 @@
+<!-- Our sidebar component -->
 <template>
   <div class="sidebar" :class="{ disabled: !activeMenu }">
     <div class="menu-list">
@@ -23,8 +24,11 @@ export default {
     },
   },
   methods: {
+    // Mannaging current view through store to update navbar title
+    // Used when index item is selected to change view and close menu
     updateView() {
       this.$store.commit('changeMenuState', !this.$store.state.activeMenu)
+      // Menu transition through css class
       document.querySelector('.sidebar').classList.add('disabled')
     },
   },

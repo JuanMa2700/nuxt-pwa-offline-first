@@ -1,8 +1,10 @@
+/* Global css variables here */
+
 :root {
   --font-primary: 'Roboto', sans-serif;
   --font-color: #333333;
-  --color-primary: #72EDF2;
-  --color-secondary: #6B73FF;
-  --color-third: #FFFFFF;
-  --color-fourt: #B0B0B0;
+  --color-primary: #72edf2;
+  --color-secondary: #6b73ff;
+  --color-third: #ffffff;
+  --color-fourt: #b0b0b0;
 }
