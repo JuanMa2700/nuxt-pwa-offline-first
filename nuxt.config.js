@@ -45,7 +45,15 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    proxy: true,
+  },
+
+  // Proxy config: https://www.npmjs.com/package/@nuxtjs/proxy
+
+  proxy: {
+    '/put': 'https://postman-echo.com',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

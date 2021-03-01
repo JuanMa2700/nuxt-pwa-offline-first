@@ -10,7 +10,8 @@ const bgSyncPlugin = new workbox.backgroundSync.BackgroundSyncPlugin(
 // configured to store failed PUT requests for given route
 // in this case, our mock server url
 workbox.routing.registerRoute(
-  /https:\/\/c89adbb9-e00c-461a-a46b-24411f352568\.mock\.pstmn\.io\/user/,
+  // /https:\/\/c89adbb9-e00c-461a-a46b-24411f352568\.mock\.pstmn\.io\/user/,
+  '/put',
   new workbox.strategies.NetworkOnly({
     plugins: [bgSyncPlugin],
   }),

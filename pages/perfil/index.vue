@@ -25,8 +25,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   data() {
     return {
@@ -35,7 +33,7 @@ export default {
   },
   async fetch() {
     // fetching user data
-    const { data } = await axios.get(
+    const data = await this.$axios.$get(
       'https://jsonplaceholder.typicode.com/users/1'
     )
     // We extract the entire object

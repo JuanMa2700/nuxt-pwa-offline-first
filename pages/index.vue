@@ -45,8 +45,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   data() {
     return {
@@ -83,13 +81,9 @@ export default {
       const headers = { contentType: 'application/json' }
       try {
         // PUT request to mock server using axios library
-        await axios.put(
-          'https://c89adbb9-e00c-461a-a46b-24411f352568.mock.pstmn.io/user',
-          payload,
-          {
-            headers,
-          }
-        )
+        await this.$axios.$put('/put', payload, {
+          headers,
+        })
         // Text for material snackbar to show request success resoult
         this.text = '¡Información enviada con éxito!'
       } catch (e) {
